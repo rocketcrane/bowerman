@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bowerman - Daily Adaptive Re-calibration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏃 Bowerman Training</h1>
+            <p class="subtitle">Daily Adaptive Re-calibration Flow</p>
+        </header>
+
+        <!-- Morning Ritual Section -->
+        <section id="morning-ritual" class="card">
+            <h2>Morning Ritual</h2>
+            <p class="section-description">Log your current state to calibrate today's training</p>
+
+            <form id="morning-ritual-form">
+                <div class="form-group">
+                    <label for="soreness">Muscle Soreness Level</label>
+                    <div class="slider-container">
+                        <input type="range" id="soreness" name="soreness" min="1" max="5" value="3" class="slider">
+                        <div class="slider-labels">
+                            <span>1 (Fresh)</span>
+                            <span id="soreness-value">3</span>
+                            <span>5 (Wrecked)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivation">Mental Motivation Level</label>
+                    <div class="slider-container">
+                        <input type="range" id="motivation" name="motivation" min="1" max="5" value="3" class="slider">
+                        <div class="slider-labels">
+                            <span>1 (Zero)</span>
+                            <span id="motivation-value">3</span>
+                            <span>5 (Peak)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Submit Morning Check-In</button>
+            </form>
+        </section>
+
+        <!-- Health Data Section -->
+        <section id="health-data" class="card">
+            <h2>Recovery Metrics</h2>
+            <p class="section-description">Synced from HealthKit</p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">❤️</div>
+                    <div class="metric-label">HRV</div>
+                    <div class="metric-value" id="hrv-value">--</div>
+                    <div class="metric-status" id="hrv-status"></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">😴</div>
+                    <div class="metric-label">Sleep Quality</div>
+                    <div class="metric-value" id="sleep-value">--</div>
+                    <div class="metric-status" id="sleep-status"></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">💪</div>
+                    <div class="metric-label">Readiness Score</div>
+                    <div class="metric-value" id="readiness-value">--</div>
+                    <div class="metric-status" id="readiness-status"></div>
+                </div>
+            </div>
+
+            <button id="sync-healthkit" class="btn-secondary">🔄 Sync HealthKit Data</button>
+        </section>
+
+        <!-- Daily Directive Section -->
+        <section id="daily-directive" class="card" style="display: none;">
+            <h2>Today's Directive</h2>
+
+            <div id="modification-alert" class="alert" style="display: none;">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                    <strong>Plan Modified</strong>
+                    <p id="modification-reason"></p>
+                </div>
+            </div>
+
+            <div class="directive-comparison">
+                <div class="plan-column">
+                    <h3>Base Plan</h3>
+                    <div id="base-plan" class="plan-details">
+                        <div class="workout-type">Easy Run</div>
+                        <div class="workout-details">
+                            <p><strong>Distance:</strong> 8 miles</p>
+                            <p><strong>Pace:</strong> 7:30-8:00 min/mile</p>
+                            <p><strong>Duration:</strong> ~60 minutes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow-column">
+                    <span id="arrow-indicator">→</span>
+                </div>
+
+                <div class="plan-column actual-plan">
+                    <h3>Actual Directive</h3>
+                    <div id="actual-plan" class="plan-details">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="tough-love-message" class="tough-love">
+                <!-- Tough love message will be inserted here -->
+            </div>
+
+            <button id="acknowledge-directive" class="btn-primary">I Got It - Let's Go</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
